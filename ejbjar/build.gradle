@@ -1,0 +1,14 @@
+apply plugin: 'java'
+
+// create earlib configuration for dependencies that should be included in ear
+configurations {
+    earlib
+    compile.extendsFrom(earlib)
+}
+
+dependencies {
+    // will be included in the ear /lib/ folder
+    earlib group: 'org.hibernate', name: 'hibernate-validator', version: '5.2.0.Final'
+    // is available during compile, but will not be part of the ear
+    provided group: 'javax', name: 'javaee-api', version: '7.0'
+}

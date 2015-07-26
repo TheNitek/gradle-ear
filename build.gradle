@@ -1,0 +1,18 @@
+apply plugin: 'base' // To add "clean" task to the root project.
+
+subprojects {
+    apply from: rootProject.file('common.gradle')
+}
+
+buildscript {
+    repositories { mavenCentral() }
+
+    dependencies {
+        // allow "provided" dependencies in jar files
+        classpath 'com.netflix.nebula:gradle-extra-configurations-plugin:2.2.+'
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.5'
+}

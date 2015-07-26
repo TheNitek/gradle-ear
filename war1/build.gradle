@@ -1,0 +1,8 @@
+apply plugin: 'war'
+// we want a war not a jar
+jar.enabled = false
+
+dependencies {
+    providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version:'3.+'
+    providedCompile project(':ejbjar')
+}

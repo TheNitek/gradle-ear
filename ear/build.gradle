@@ -1,0 +1,12 @@
+apply plugin: 'ear'
+
+dependencies {
+    // configuration 'archives' is necessary to work around 
+    // https://issues.gradle.org/browse/GRADLE-1912
+    deploy project(path: ':war1', configuration: 'archives')
+    deploy project(path: ':ejbjar', configuration: 'archives')
+    
+    // configuration 'earlib' is needed to include (non-provided) dependencies,
+    // but exclude ejbjar.jar itself from the /lib/ folder
+    earlib project(path: ':ejbjar', configuration: 'earlib')
+}
